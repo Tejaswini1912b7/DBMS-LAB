@@ -1,0 +1,26 @@
+DROP DATABASE IF EXISTS 19WH1A12B7;
+CREATE SCHEMA 19WH1A12B7;
+USE 19WH1A12B7;
+
+CREATE TABLE Passenger(P_name VARCHAR(20), P_id INT, Ticket_no INT,  Gender VARCHAR(20), age INT, Destination VARCHAR(20));
+INSERT INTO Passenger VALUES('Tejaswini', 1243, 40, 'Female', 2021, 'Hyderabad');
+INSERT INTO Passenger VALUES('Ramesh', 1276, 54, 'Male', 2022, 'Hyderabad');
+INSERT INTO Passenger VALUES('Ram', 1291, 33, 'Male', 2025, 'Guntur');
+INSERT INTO Passenger VALUES('Keerthana', 1290, 40, 'Female', 2028, 'Hyderabad');
+INSERT INTO Passenger VALUES('Andrea', 1364, 37, 'Female', 2026, 'Tirupati');
+
+CREATE TABLE Ticket(T_id INT, T_cost INT, destination VARCHAR(20), seatno VARCHAR(20), P_id INT);
+INSERT INTO Ticket VALUES(1265, 240, 'Vizag', 'L12', 1234);
+INSERT INTO Ticket VALUES(1299, 290, 'Hyderabad', 'L67', 1276);
+INSERT INTO Ticket VALUES(1245, 200, 'Vizag', 'L42', 1291);
+INSERT INTO Ticket VALUES(1278, 700, 'Hyderabad', 'L52', 1290);
+INSERT INTO Ticket VALUES(1234, 240, 'Hyderabad', 'L53', 1243);
+INSERT INTO Ticket VALUES(1212, 570, 'Hyderabad', 'R19', 1235);
+
+SELECT DISTINCT P.P_id FROM Passenger P ;
+SELECT P.p_name FROM Passenger P WHERE P.gender = 'Male';
+SELECT T.T_id, P.P_name FROM Ticket T, Passenger P WHERE P.P_id = T.P_id;
+SELECT T.T_id FROM Ticket T ,Passenger P WHERE P.P_name LIKE 'R%h' AND P.P_id = T.P_id ;
+SELECT P.P_name FROM Passenger P WHERE P.age >= 30 AND P.age <= 45;
+SELECT P.P_name FROM Passenger P WHERE P.P_name LIKE 'A%';
+SELECT P.P_name FROM Passenger P ORDER BY P_name ASC;
