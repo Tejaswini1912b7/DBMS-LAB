@@ -1,0 +1,17 @@
+DROP DATABASE IF EXISTS 19WH1A12B7;
+CREATE SCHEMA 19WH1A12B7;
+USE 19WH1A12B7;
+
+CREATE TABLE Passenger(P_name VARCHAR(20), ID INT, Ticket_no INT,  Gender VARCHAR(20), age INT, Destination VARCHAR(20));
+INSERT INTO Passenger VALUES('Tejaswini', 1243, 67, 'Female', 2021, 'Hyderabad');
+INSERT INTO Passenger VALUES('Sri Laxmi', 1276, 54, 'Male', 2022, 'Hyderabad');
+INSERT INTO Passenger VALUES('Ram', 1291, 33, 'Male', 2025, 'Guntur');
+INSERT INTO Passenger VALUES('Keerthi', 1290, 40, 'Female', 2028, 'Hyderabad');
+INSERT INTO Passenger VALUES('Revathi', 1364, 37, 'Female', 2026, 'Tirupati');
+SELECT * FROM Passenger;
+DELETE FROM Passenger P WHERE P.age=50;
+SELECT * FROM Passenger;
+UPDATE Passenger
+SET P_name = 'Priya', Destination='Hyderabad'
+WHERE ID = 1364;
+SELECT * FROM Passenger;
