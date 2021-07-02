@@ -1,0 +1,38 @@
+DROP DATABASE IF EXISTS 19WH1A12B7;
+CREATE SCHEMA 19WH1A12B7;
+USE 19WH1A12B7;
+
+CREATE TABLE Passenger(P_name VARCHAR(20), P_id INT, Gender VARCHAR(20), age INT, P_destination VARCHAR(20));
+INSERT INTO Passenger VALUES('Tejaswini', 1243, 'Female', 67, 'Hyderabad');
+INSERT INTO Passenger VALUES('Tejaswini', 1243, 'Female', 42, 'Tirupati');
+INSERT INTO Passenger VALUES('Srilaxmi', 1276, 'Female', 38, 'Hyderabad');
+INSERT INTO Passenger VALUES('Rishabh', 1291, 'Male', 40, 'Chilkur');
+INSERT INTO Passenger VALUES('Keerthi', 1290, 'Female', 56, 'Hyderabad');
+INSERT INTO Passenger VALUES('Raghu', 1284, 'Male', 47, 'Banglore');
+INSERT INTO Passenger VALUES("Vaishnavi", 1265, 'Female', 18, 'Banglore');
+
+CREATE TABLE Reservation(R_id INT, name CHAR(20),age INT, bus_no VARCHAR(20), Sourc VARCHAR(20), destination VARCHAR(20), bcolour VARCHAR(20));
+INSERT INTO Reservation VALUES(2226,'Suresh',20, 'TS121','Chennai','Banglore','yellow');
+INSERT INTO Reservation VALUES(2290,'Ram',30,  'TS122','Hyderabad','Pune','red');
+INSERT INTO Reservation VALUES(2284,'Teena',17, 'TS123','Mumbai','Lingampally','blue');
+INSERT INTO Reservation VALUES(2239,'Martin',25, 'TS124','Sangareddy','Secunderabad','blue');
+INSERT INTO Reservation VALUES(2230,'Priya',45, 'TS125','Warangal','Hyderabad','green');
+
+
+CREATE View PassengerView AS SELECT * FROM Passenger;
+SELECT * from PassengerView; 
+
+SELECT P.P_id, P.P_name FROM Passenger P WHERE P.P_id in(1276,1290,1243); 
+
+CREATE View ReservationView AS SELECT R.R_id FROM Reservation R; 
+SELECT * from ReservationView; 
+
+CREATE View ReservationVw AS SELECT * FROM Reservation R; 
+INSERT INTO ReservationVw VALUES(1126,'Brijesh',20,'TS126','Hyderabad','Gulbargha','blue');
+SELECT * FROM ReservationVw;
+
+UPDATE ReservationVw SET R_id=2239 WHERE destination='Hyderabad';
+SELECT * FROM ReservationVw;
+
+DELETE FROM ReservationVw WHERE R_id=2284;
+SELECT * FROM ReservationVw;
