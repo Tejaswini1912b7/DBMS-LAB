@@ -1,0 +1,18 @@
+DROP DATABASE IF EXISTS 19WH1A12B7;
+CREATE SCHEMA 19WH1A12B7;
+USE 19WH1A12B7;
+
+CREATE TABLE Passenger(P_name VARCHAR(20), P_id INT, Gender VARCHAR(20), age INT, P_destination VARCHAR(20));
+INSERT INTO Passenger VALUES('Tejaswini', 1243, 'Female', 67, 'Hyderabad');
+INSERT INTO Passenger VALUES('Tejaswini', 1243, 'Female', 42, 'Tirupati');
+INSERT INTO Passenger VALUES('Srilaxmi', 1276, 'Female', 38, 'Hyderabad');
+INSERT INTO Passenger VALUES('Rishabh', 1291, 'Male', 40, 'Chilkur');
+INSERT INTO Passenger VALUES('Keerthi', 1290, 'Female', 56, 'Hyderabad');
+INSERT INTO Passenger VALUES('Raghu', 1284, 'Male', 47, 'Banglore');
+INSERT INTO Passenger VALUES("Vaishnavi", 1265, 'Female', 18, 'Banglore');
+
+SELECT COUNT(*) FROM Passenger;  
+SELECT SUM(P_id) FROM Passenger;  
+SELECT AVG(age) FROM Passenger;  
+SELECT MAX(age) FROM Passenger;  
+SELECT MIN(P_name) FROM Passenger;  
