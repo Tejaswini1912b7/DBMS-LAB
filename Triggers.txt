@@ -1,0 +1,14 @@
+-- create trigger before insert into passenger tables, the amount of ticket has to be updated with value 1000 if bus id=10 
+CREATE TABLE Passenger(pid INT,   name VARCHAR(50),   age INT,   gender CHAR,   phone BIGINT,   address VARCHAR(20),   price INT,   busid INT);
+
+CREATE TRIGGER amount
+BEFORE INSERT
+ON Passenger
+FOR EACH ROW
+SET new.price = 1000;
+
+INSERT INTO Passenger VALUES(127, 'Rahul',   50, 'M', 8974990321, 'Hyderabad',  456, 10);
+INSERT INTO Passenger VALUES(128, 'Pallavi', 25, 'F', 6578349900, 'Hyderabad',  252, 20);
+INSERT INTO Passenger VALUES(129, 'Hasini',  21, 'F', 9876776568, 'Tirupathi',  478, 10);
+INSERT INTO Passenger VALUES(125, 'Sameer',  36, 'M', 9878966854, 'Vijayawada', 348, 40);
+SELECT * FROM Passenger;
