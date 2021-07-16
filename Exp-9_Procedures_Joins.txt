@@ -1,0 +1,51 @@
+DROP DATABASE IF EXISTS 19WH1A12B7;
+CREATE SCHEMA 19WH1A12B7;
+USE 19WH1A12B7;
+
+CREATE TABLE dept(did BIGINT primary key, dname VARCHAR(15));
+INSERT INTO dept VALUES(101, 'CSE');
+INSERT INTO dept VALUES(102, 'EEE');
+INSERT INTO dept VALUES(103, 'IT');
+INSERT INTO dept VALUES(104, 'ECE');
+INSERT INTO dept VALUES(105, 'IT');
+
+CREATE TABLE emp(empid BIGINT primary key, ename VARCHAR(20), sal BIGINT, deptid BIGINT);
+INSERT INTO emp VALUES(1, 'sreenija', 80000, 101);
+INSERT INTO emp VALUES(2, 'sri priya',40000, 102);
+INSERT INTO emp VALUES(3, 'raman',    60000, 103);
+INSERT INTO emp VALUES(4, 'kalyan',   30000, 104);
+INSERT INTO emp VALUES(5, 'sidharth', 60000, 105);
+
+delimiter //
+CREATE PROCEDURE myproc()
+BEGIN
+Select * from emp where ename like 's%';
+END;
+Call myproc(); //
+
+delimiter //
+CREATE PROCEDURE myinputproc(IN salarytocompare REAL)
+BEGIN
+Select * from emp where sal < salarytocompare;
+END;
+Call myinputproc(20000); //
+
+delimiter //
+CREATE PROCEDURE myoutproc(OUT countofemp int)
+BEGIN
+Select count(*) INTO countofemp from emp where sal<20000;
+END;
+Call myoutproc(@a); //  
+Select @a; // 
+
+delimiter //
+CREATE PROCEDURE myinoutproc(IN salarytocompare REAL,OUT countofemp int)
+BEGIN
+Select count(*) INTO countofemp from emp where sal > salarytocompare;
+END;
+Call myinoutproc(10000, @cnt); // 
+Select @cnt; //  
+
+Select e.ename,d.dname from emp e LEFT OUTER JOIN dept d on e.deptid= d.did;
+
+Select e.ename,d.dname from emp e RIGHT OUTER JOIN dept d on e.deptid= d.did;
